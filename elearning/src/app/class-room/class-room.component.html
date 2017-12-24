@@ -1,0 +1,74 @@
+<div class="page-header">
+    <h1>
+        Classroom
+    </h1>
+</div>
+
+<div class="container">
+    <div  class="center-block text-center">
+        <button type="button" class="btn btn-primary">
+            <span class="glyphicon glyphicon-facetime-video"></span>
+        </button>
+        <button type="button" class="btn btn-primary">
+            <span class="glyphicon glyphicon-volume-up"></span>
+        </button>
+        <button type="button" class="btn btn-primary">
+            <span class="glyphicon glyphicon-eye-open"></span>
+        </button>
+        <button type="button" class="btn btn-primary pull-right">
+            <span class="glyphicon glyphicon-cog"></span>
+        </button>
+    </div>
+</div>	
+	
+	<div class="modal-body row">
+	
+			<div class="col-md-6">
+				<div align="center">
+				<h3>PDF Viewer</h3>
+				<div class="form-group">
+					<input (change)="onFileSelected()" type="file" id="file" class="form-control-file">
+					<small id="fileHelp" class="form-text text-muted">Update your PDF slides</small>
+				</div>
+
+				<div *ngIf="error" class="error mb">
+					{{ error.message | json }}
+				</div>
+
+				<div *ngIf="!isLoaded && !error && progressData" id="progress">
+				<div class="bg">
+				<div class="bar" [style.width]="progressData.loaded / progressData.total * 100 + '%'"></div>
+				</div>
+				<span>{{ getInt(progressData.loaded / progressData.total * 100) }}%</span>
+				</div>
+
+				<pdf-viewer [src]="pdfSrc"
+				[(page)]="page"
+				[rotation]="rotation"
+				[original-size]="originalSize"
+				(after-load-complete)="afterLoadComplete($event)"
+				[zoom]="zoom"
+				[show-all]="showAll"
+				[stick-to-page]="stickToPage"
+				[render-text]="renderText"
+				[external-link-target]="'blank'"
+				[autoresize]="autoresize"
+				(error)="onError($event)"
+				(on-progress)="onProgress($event)"
+				></pdf-viewer>	
+				</div>
+			</div>
+			
+			<div class="col-md-6">
+				<div align="center">
+					<h3>Jitsi Meeting</h3>
+					<div id="meet"> </div>
+					<h1>Real Time Chat</h1>
+					<div *ngFor="let message of messages | async">
+						{{message.$value}}
+					</div>
+					<input type="text" #message placeholder="Your message..">
+					<button (click)="newMessage(message.value)">Send message</button>
+				</div>
+			</div>
+	</div>				

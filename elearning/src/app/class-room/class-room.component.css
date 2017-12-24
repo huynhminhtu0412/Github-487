@@ -1,0 +1,74 @@
+.page-content {
+  padding-top: 10px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mdl-layout__content header {
+  color: #fff;
+  background-color: #3f51b5;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.mdl-layout__content header svg {
+  fill: #fff;
+  width: 56px;
+  height: 56px;
+}
+
+@media all and (max-width: 480px) {
+  .page-content {
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+.select-file__container {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.select-file__container p {
+  margin-bottom: 0;
+}
+
+.page-number {
+  width: 50px;
+}
+
+.mb {
+  margin-bottom: 10px;
+}
+
+pdf-viewer {
+  display: block;
+}
+
+.error {
+  color: #ff4146;
+}
+
+#progress {
+  margin-top: 50px;
+  width: 100px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+#progress .bar,
+#progress .bg {
+  height: 20px;
+}
+#progress .bg {
+  background-color: #e3e3e3;
+}
+#progress .bar {
+  width: 0;
+  max-width: 100%;
+  background-color: #3f51b5;
+  transition: .5s width;
+}
